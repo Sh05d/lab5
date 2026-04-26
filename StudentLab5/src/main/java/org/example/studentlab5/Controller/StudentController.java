@@ -53,7 +53,7 @@ public class StudentController {
 
 
     @GetMapping("classify-student")
-    public String classifyStudents(){
+    public ApiResponse classifyStudents(){
         ArrayList<Student> firstHonor = new ArrayList<>();
         ArrayList<Student> secondHonor = new ArrayList<>();
 
@@ -65,7 +65,7 @@ public class StudentController {
                 secondHonor.add(student);
             }
         }
-        return "First honors: \n" +firstHonor+"\n Second honor:\n"+secondHonor;
+        return new ApiResponse("First honors: " +firstHonor+", Second honor:"+secondHonor);
     }
 
     @GetMapping("/above-average")
