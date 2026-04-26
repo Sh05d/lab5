@@ -19,6 +19,10 @@ public class StudentController {
                 return new ApiResponse("Student exist");
             }
         }
+        if(newStudent.getAge() < 0)
+            return new ApiResponse("Age can't be negative");
+        if(newStudent.getGpa() < 0 || newStudent.getGpa() > 5)
+            return new ApiResponse("GPA should be between 0 and 5");
         students.add(newStudent);
         return new ApiResponse("Student added successfully");
     }
@@ -72,7 +76,7 @@ public class StudentController {
     public ArrayList<Student> displayGreaterThanAverage(){
         ArrayList<Student> aboveAverage = new ArrayList<>();
 
-        double average = 0, sumOfGpa =0;
+        double average, sumOfGpa =0;
         int count =0;
         for(Student student: students){
             count++;
