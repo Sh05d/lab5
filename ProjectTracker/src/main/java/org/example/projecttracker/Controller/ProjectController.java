@@ -18,6 +18,8 @@ public class ProjectController {
             if(project.getId().equals(newProject.getId()))
                 return new ApiResponse("This project exist before");
         }
+        if(!newProject.getStatus().equalsIgnoreCase("not done") && !newProject.getStatus().equalsIgnoreCase("done"))
+            return new ApiResponse("Status should be either done or not done");
         projects.add(newProject);
         return new ApiResponse("Project added successfully");
     }
